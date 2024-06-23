@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset-US-ASCII">
+<title>Tasks</title>
+<style>
+	table,th,td{
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+</style>
+</head>
+<body>
+	<center>
+		<h1>Activity Details</h1>
+		<table style="width:40%">
+			<tr>
+				<th>Id</th>
+				<th>Task Name</th>
+			</tr>
+			<tr th:each="task:${tasks}">
+				<td th:text="${task.id}"></td>
+				<td th:text="${task.taskname}"></td>
+			</tr>
+		</table>
+		<div>
+			<form style="margin:20px 0;width: 50%;padding: 10px;"method="post" action="/addtasks">
+				<span style="font-size: 20px;"> Enter the Task Id </span><input style="font-size: 20px; width:max-content; font-family: sans-serif;" type="text" name="id" placeholder="Enter a taskid">
+				 <button style="font-size: 20px; width:max-content; font-family: sans-serif;" type="submit" value="Click to complete a task">Click to complete a task </button> 
+				 </form>
+				 <br>
+				 <br>
+				<form style=" margin: 20px 0;width: 50%; padding: 10px;margin-right: 20px;display: inline;" method="get" action="/details">
+					 <button style="font-size: 20px; width:max-content;font-family: sans-serif;" type="submit" value="Back To Home"> Back To Home</button>
+				</form>
+				<form style=" margin: 20px 0;width: 50%; padding: 10px;" method="get" action="/completedtasks">
+				<button style="font-size: 20px; width:max-content;font-family: sans-serif;" type="submit" value="View Completed Tasks">View Completed Tasks</button>
+				</form>
+		</div>
+	</center>
+</body>
+</html>
